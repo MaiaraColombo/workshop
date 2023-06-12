@@ -3,6 +3,7 @@ package com.spr.demo.entidades;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.spr.demo.entidades.pk.PedidoItemPk;
 
 import jakarta.persistence.EmbeddedId;
@@ -11,13 +12,13 @@ import jakarta.persistence.Table;
 
 
 @Entity
-@Table(name = "tb_pedido_item")
+@Table(name = "tb_pedidoitem")
 public class PedidoItem implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
-	private PedidoItemPk id;
+	private PedidoItemPk id = new PedidoItemPk();
 
 	private Integer quantidade;
 	private Double preco;
@@ -34,6 +35,7 @@ public class PedidoItem implements Serializable {
 		this.preco = preco;
 	}
 	
+	@JsonIgnore
 	public Pedido getPedido() {
 		return id.getPedido();
 	}

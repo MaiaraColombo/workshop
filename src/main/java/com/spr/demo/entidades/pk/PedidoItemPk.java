@@ -18,10 +18,13 @@ public class PedidoItemPk implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "pedido_id")
 	private Pedido pedido;
-	private Produto produto;
 	
 	@ManyToOne
 	@JoinColumn(name = "produto_id")
+	private Produto produto;
+	
+
+	
 	public Pedido getPedido() {
 		return pedido;
 	}
